@@ -23,10 +23,14 @@
 		76319AF829BDB6DB00B550D6 /* FavouriteListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76319AF729BDB6DB00B550D6 /* FavouriteListViewModel.swift */; };
 		76319AFB29BDB6F000B550D6 /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76319AFA29BDB6F000B550D6 /* MainTabBarController.swift */; };
 		76319B0129BDB7AF00B550D6 /* Games.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76319B0029BDB7AF00B550D6 /* Games.swift */; };
-		76319B0329BDB7B600B550D6 /* GameListModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76319B0229BDB7B600B550D6 /* GameListModel.swift */; };
+		76319B0329BDB7B600B550D6 /* GameListResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76319B0229BDB7B600B550D6 /* GameListResponse.swift */; };
 		76319B0529BDB7BE00B550D6 /* GameDetailModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76319B0429BDB7BE00B550D6 /* GameDetailModel.swift */; };
 		76319B0729BDB7C400B550D6 /* Developer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76319B0629BDB7C400B550D6 /* Developer.swift */; };
 		76319B0929BDB7CC00B550D6 /* AddedByStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76319B0829BDB7CC00B550D6 /* AddedByStatus.swift */; };
+		76319B0B29BDC23900B550D6 /* NetworkProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76319B0A29BDC23900B550D6 /* NetworkProtocol.swift */; };
+		76319B0D29BDC25F00B550D6 /* NetworkLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76319B0C29BDC25F00B550D6 /* NetworkLayer.swift */; };
+		76319B0F29BDC27900B550D6 /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76319B0E29BDC27900B550D6 /* NetworkError.swift */; };
+		76319B1129BDC30200B550D6 /* GameService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76319B1029BDC30200B550D6 /* GameService.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -67,10 +71,14 @@
 		76319AF729BDB6DB00B550D6 /* FavouriteListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavouriteListViewModel.swift; sourceTree = "<group>"; };
 		76319AFA29BDB6F000B550D6 /* MainTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
 		76319B0029BDB7AF00B550D6 /* Games.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Games.swift; sourceTree = "<group>"; };
-		76319B0229BDB7B600B550D6 /* GameListModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameListModel.swift; sourceTree = "<group>"; };
+		76319B0229BDB7B600B550D6 /* GameListResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameListResponse.swift; sourceTree = "<group>"; };
 		76319B0429BDB7BE00B550D6 /* GameDetailModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameDetailModel.swift; sourceTree = "<group>"; };
 		76319B0629BDB7C400B550D6 /* Developer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Developer.swift; sourceTree = "<group>"; };
 		76319B0829BDB7CC00B550D6 /* AddedByStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddedByStatus.swift; sourceTree = "<group>"; };
+		76319B0A29BDC23900B550D6 /* NetworkProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkProtocol.swift; sourceTree = "<group>"; };
+		76319B0C29BDC25F00B550D6 /* NetworkLayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkLayer.swift; sourceTree = "<group>"; };
+		76319B0E29BDC27900B550D6 /* NetworkError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkError.swift; sourceTree = "<group>"; };
+		76319B1029BDC30200B550D6 /* GameService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameService.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -229,7 +237,7 @@
 				76319B0829BDB7CC00B550D6 /* AddedByStatus.swift */,
 				76319B0629BDB7C400B550D6 /* Developer.swift */,
 				76319B0429BDB7BE00B550D6 /* GameDetailModel.swift */,
-				76319B0229BDB7B600B550D6 /* GameListModel.swift */,
+				76319B0229BDB7B600B550D6 /* GameListResponse.swift */,
 				76319B0029BDB7AF00B550D6 /* Games.swift */,
 			);
 			path = Model;
@@ -245,6 +253,10 @@
 		76319AFE29BDB74E00B550D6 /* Service */ = {
 			isa = PBXGroup;
 			children = (
+				76319B0A29BDC23900B550D6 /* NetworkProtocol.swift */,
+				76319B0C29BDC25F00B550D6 /* NetworkLayer.swift */,
+				76319B0E29BDC27900B550D6 /* NetworkError.swift */,
+				76319B1029BDC30200B550D6 /* GameService.swift */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -392,13 +404,17 @@
 				76319AF129BDB6BB00B550D6 /* GameDetailViewController.swift in Sources */,
 				76319B0129BDB7AF00B550D6 /* Games.swift in Sources */,
 				76319AF829BDB6DB00B550D6 /* FavouriteListViewModel.swift in Sources */,
+				76319B1129BDC30200B550D6 /* GameService.swift in Sources */,
 				76319B0729BDB7C400B550D6 /* Developer.swift in Sources */,
 				76319AEC29BC678900B550D6 /* GameListViewController.swift in Sources */,
 				76319AF629BDB6D400B550D6 /* FavouriteListViewController.swift in Sources */,
 				76319ABD29BBB83200B550D6 /* rawg_ios.xcdatamodeld in Sources */,
-				76319B0329BDB7B600B550D6 /* GameListModel.swift in Sources */,
+				76319B0329BDB7B600B550D6 /* GameListResponse.swift in Sources */,
+				76319B0D29BDC25F00B550D6 /* NetworkLayer.swift in Sources */,
 				76319B0529BDB7BE00B550D6 /* GameDetailModel.swift in Sources */,
+				76319B0B29BDC23900B550D6 /* NetworkProtocol.swift in Sources */,
 				76319AB329BBB83200B550D6 /* AppDelegate.swift in Sources */,
+				76319B0F29BDC27900B550D6 /* NetworkError.swift in Sources */,
 				76319B0929BDB7CC00B550D6 /* AddedByStatus.swift in Sources */,
 				76319AB529BBB83200B550D6 /* SceneDelegate.swift in Sources */,
 			);

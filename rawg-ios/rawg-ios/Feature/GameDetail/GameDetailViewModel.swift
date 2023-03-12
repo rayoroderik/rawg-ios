@@ -10,7 +10,8 @@ import CoreData
 class GameDetailViewModel {
     var didGetData: (() -> Void)?
     
-    var service: GameService = GameService()
+    var service: GameServiceProtocol = GameService()
+    var coreDataStack: CoreDataStack = CoreDataStack(modelName: "rawg_ios")
     
     var gameID: Int?
     var game: GameDetailModel?
@@ -45,7 +46,7 @@ class GameDetailViewModel {
         guard let gameID = gameID else { return false }
         let gameFetch: NSFetchRequest<FavouriteGame> = FavouriteGame.fetchRequest()
         do {
-            let managedContext = AppDelegate.sharedAppDelegate.coreDataStack.managedContext
+            let managedContext = coreDataStack.managedContext
             let results = try managedContext.fetch(gameFetch)
             let games = results.map { Int($0.gameID) }
             if games.contains(gameID) {
@@ -60,7 +61,7 @@ class GameDetailViewModel {
     
     func saveFavourite() {
         guard let game = game else { return }
-        let managedContext = AppDelegate.sharedAppDelegate.coreDataStack.managedContext
+        let managedContext = coreDataStack.managedContext
         let newGame = FavouriteGame(context: managedContext)
         newGame.setValue(game.id, forKey: #keyPath(FavouriteGame.gameID))
         newGame.setValue(game.backgroundImage, forKey: #keyPath(FavouriteGame.imageURL))
@@ -68,24 +69,24 @@ class GameDetailViewModel {
         newGame.setValue(game.released, forKey: #keyPath(FavouriteGame.releaseDate))
         newGame.setValue(game.rating, forKey: #keyPath(FavouriteGame.rating))
         
-        AppDelegate.sharedAppDelegate.coreDataStack.saveContext()
+        coreDataStack.saveContext()
     }
     
     func removeFavourite() {
         guard let gameID = gameID else { return }
         let gameFetch: NSFetchRequest<FavouriteGame> = FavouriteGame.fetchRequest()
         do {
-            let managedContext = AppDelegate.sharedAppDelegate.coreDataStack.managedContext
+            let managedContext = coreDataStack.managedContext
             let results = try managedContext.fetch(gameFetch)
             guard let game = results.first(where: { Int($0.gameID) == gameID }) else { return }
-            AppDelegate.sharedAppDelegate.coreDataStack.managedContext.delete(game)
-            AppDelegate.sharedAppDelegate.coreDataStack.saveContext()
+            coreDataStack.managedContext.delete(game)
+            coreDataStack.saveContext()
         } catch {
             return
         }
     }
     
-    func getErrorMessage() -> String? {
-        return errorMessage
+    func getErrorMessage() -> String {
+        return errorMessage ?? ""
     }
 }

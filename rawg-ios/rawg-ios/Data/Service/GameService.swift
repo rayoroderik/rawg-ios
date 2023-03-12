@@ -7,8 +7,17 @@
 
 import Foundation
 
-class GameService {
+protocol GameServiceProtocol {
     typealias CompletionHandler<T> = (Result<T, Error>) -> Void
+    
+    func fetchGameList(page: Int, completion: @escaping CompletionHandler<GameListResponse>)
+    func fetchGameDetail(gameID: Int, completion: @escaping CompletionHandler<GameDetailModel>)
+    func searchGame(keyword: String, completion: @escaping CompletionHandler<GameListResponse>)
+}
+
+class GameService: GameServiceProtocol {
+    typealias CompletionHandler<T> = (Result<T, Error>) -> Void
+    
     var apiKey: String { return "7a0c9315a11b41428b24563ccbc521ed" }
     
     var baseURL: URL {

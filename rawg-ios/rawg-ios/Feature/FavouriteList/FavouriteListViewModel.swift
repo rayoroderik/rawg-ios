@@ -11,21 +11,21 @@ class FavouriteListViewModel {
     var didGetData: (() -> Void)?
     var updateErrorView: (() -> Void)?
     
-    var service: GameService = GameService()
-    var gameList: GameListResponse?
+    var coreDataStack: CoreDataStack = CoreDataStack(modelName: "rawg_ios")
     var games: [FavouriteGame] = []
-    var page = 1
     var errorMessage: String?
     
     func getGameList() {
         let gameFetch: NSFetchRequest<FavouriteGame> = FavouriteGame.fetchRequest()
         do {
-            let managedContext = AppDelegate.sharedAppDelegate.coreDataStack.managedContext
+            let managedContext = coreDataStack.managedContext
             let results = try managedContext.fetch(gameFetch)
             games = results
             didGetData?()
+            updateErrorView?()
         } catch let error as NSError {
             print("Fetch error: \(error) description: \(error.userInfo)")
+            updateErrorView?()
         }
     }
     

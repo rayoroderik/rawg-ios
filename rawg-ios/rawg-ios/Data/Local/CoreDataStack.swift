@@ -9,13 +9,13 @@ import Foundation
 import CoreData
 
 class CoreDataStack {
-    private let modelName: String
+    let modelName: String
     
     init(modelName: String) {
         self.modelName = modelName
     }
     
-    private lazy var storeContainer: NSPersistentContainer = {
+    lazy var storeContainer: NSPersistentContainer = {
         let container = NSPersistentContainer(name: self.modelName)
         container.loadPersistentStores { _, error in
             if let error = error as NSError? {

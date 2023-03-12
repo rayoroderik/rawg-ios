@@ -11,7 +11,7 @@ class GameListViewModel {
     var didGetData: (() -> Void)?
     var updateErrorView: (() -> Void)?
     
-    var service: GameService = GameService()
+    var service: GameServiceProtocol = GameService()
     var gameList: GameListResponse?
     var games: [Games] = []
     var page: Int = 1

@@ -21,7 +21,7 @@ class GameService {
         self.network = network
     }
     
-    func fetchGameList(page: Int, completion: @escaping CompletionHandler<[GameListResponse]>) {
+    func fetchGameList(page: Int, completion: @escaping CompletionHandler<GameListResponse>) {
         var components = URLComponents(url: baseURL.appendingPathComponent("games"),
                                        resolvingAgainstBaseURL: true)!
         components.queryItems = [URLQueryItem(name: "key", value: apiKey),
@@ -31,7 +31,7 @@ class GameService {
             completion(.failure(NetworkError.invalidURL))
             return
         }
-        network.request(url: url, method: .get) { (result: Result<[GameListResponse], Error>) in
+        network.request(url: url, method: .get) { (result: Result<GameListResponse, Error>) in
             switch result {
             case .success(let gameList):
                 completion(.success(gameList))
@@ -59,7 +59,7 @@ class GameService {
         }
     }
     
-    func searchGame(keyword: String, completion: @escaping CompletionHandler<[GameListResponse]>) {
+    func searchGame(keyword: String, completion: @escaping CompletionHandler<GameListResponse>) {
         var components = URLComponents(url: baseURL.appendingPathComponent("games"),
                                        resolvingAgainstBaseURL: true)!
         components.queryItems = [URLQueryItem(name: "key", value: apiKey),
@@ -69,7 +69,7 @@ class GameService {
             completion(.failure(NetworkError.invalidURL))
             return
         }
-        network.request(url: url, method: .get) { (result: Result<[GameListResponse], Error>) in
+        network.request(url: url, method: .get) { (result: Result<GameListResponse, Error>) in
             switch result {
             case .success(let news):
                 completion(.success(news))

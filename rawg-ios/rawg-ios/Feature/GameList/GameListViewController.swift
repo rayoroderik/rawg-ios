@@ -82,7 +82,6 @@ class GameListViewController: UIViewController {
     }
     
     func setupConstraint() {
-        
         searchBar.translatesAutoresizingMaskIntoConstraints = false
         collectionView.translatesAutoresizingMaskIntoConstraints = false
 
@@ -96,19 +95,6 @@ class GameListViewController: UIViewController {
             collectionView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16),
             collectionView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -16)
         ])
-        
-//        searchBar.snp.makeConstraints { make in
-//            make.top.equalTo(view.safeAreaLayoutGuide)
-//            make.leading.equalToSuperview().offset(8)
-//            make.trailing.equalToSuperview().offset(-8)
-//        }
-//        
-//        collectionView.snp.makeConstraints { make in
-//            make.top.equalTo(searchBar.snp.bottom).offset(8)
-//            make.bottom.equalToSuperview()
-//            make.leading.equalToSuperview().offset(16)
-//            make.trailing.equalToSuperview().offset(-16)
-//        }
     }
     
     func setupErrorConstraint() {
@@ -121,9 +107,8 @@ class GameListViewController: UIViewController {
             errorView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             errorView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
 
-            errorLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             errorLabel.centerYAnchor.constraint(equalTo: view.centerYAnchor),
-            errorLabel.leadingAnchor.constraint(equalTo: view.trailingAnchor, constant: 16),
+            errorLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16),
             errorLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -16)
         ])
     }
@@ -184,9 +169,9 @@ extension GameListViewController: UICollectionViewDelegate, UICollectionViewData
         let game = games[indexPath.row]
         guard let gameID = game.id else { return }
 
-//        let viewController = GameDetailViewController()
-//        viewController.setGameID(id: gameID)
-//        navigationController?.pushViewController(viewController, animated: true)
+        let viewController = GameDetailViewController()
+        viewController.setGameID(id: gameID)
+        navigationController?.pushViewController(viewController, animated: true)
     }
     
     func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {

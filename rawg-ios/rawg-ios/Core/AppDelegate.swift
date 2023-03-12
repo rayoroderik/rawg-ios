@@ -12,7 +12,7 @@ import CoreData
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
-    lazy var coreDataStack: CoreDataStack = .init(modelName: "RAWGDB")
+    lazy var coreDataStack: CoreDataStack = .init(modelName: "rawg_ios")
     
     static let sharedAppDelegate: AppDelegate = {
         guard let delegate = UIApplication.shared.delegate as? AppDelegate else {

@@ -18,8 +18,6 @@ class CustomImageView: UIImageView {
         
         guard let url = URL(string: urlString) else { return }
         
-        image = nil
-        
         if let imageFromCache = imageCache.object(forKey: urlString as NSString) {
             self.image = imageFromCache
             return

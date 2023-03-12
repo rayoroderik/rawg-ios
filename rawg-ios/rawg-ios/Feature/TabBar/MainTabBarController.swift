@@ -44,7 +44,7 @@ class MainTabBarController: UITabBarController, UITabBarControllerDelegate {
                                                       tag: 0)
 
         // Create the second view controller and set its tab bar item
-        let secondViewController = GameListViewController()
+        let secondViewController = FavouriteListViewController()
         let secondNavController = UINavigationController(rootViewController: secondViewController)
         secondViewController.tabBarItem = UITabBarItem(title: "Favorite",
                                                        image: UIImage(systemName: "heart"),
@@ -68,8 +68,4 @@ class MainTabBarController: UITabBarController, UITabBarControllerDelegate {
         
         return true
     }
-}
-
-protocol TabBarReselectHandling {
-    func handleReselect()
 }

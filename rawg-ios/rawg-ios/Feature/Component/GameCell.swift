@@ -89,6 +89,8 @@ class GameCell: UICollectionViewCell {
 
     func populate(image: String?, name: String?, releaseDate: String?, rating: Double?) {
         
+        gameImageView.image = nil
+        
         if let imageURL = image {
             gameImageView.loadImageUsingUrlString(urlString: imageURL)
         }

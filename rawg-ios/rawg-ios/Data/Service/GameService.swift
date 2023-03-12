@@ -41,7 +41,7 @@ class GameService {
         }
     }
     
-    func fetchGameDetail(gameID: String, completion: @escaping CompletionHandler<GameDetailModel>) {
+    func fetchGameDetail(gameID: Int, completion: @escaping CompletionHandler<GameDetailModel>) {
         var components = URLComponents(url: baseURL.appendingPathComponent("games/\(gameID)"),
                                        resolvingAgainstBaseURL: true)!
         components.queryItems = [URLQueryItem(name: "key", value: apiKey)]
